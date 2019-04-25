@@ -1,0 +1,19 @@
+.navbar {
+  background-color: whitesmoke;
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.item {
+  margin: 0;
+  padding: 5px 20px;
+  display: inline-block;
+}
