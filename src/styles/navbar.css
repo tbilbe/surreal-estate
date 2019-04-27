@@ -17,3 +17,9 @@
   padding: 5px 20px;
   display: inline-block;
 }
+
+.item:hover {
+  background-color: #ffd3ff;
+  cursor: pointer;
+  border-radius: 14px;
+}
