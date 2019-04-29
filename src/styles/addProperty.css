@@ -1,0 +1,12 @@
+.addProperty {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 15px;
+  padding: 10px 10px;
+}
+
+form {
+  background-color: aquamarine;
+  padding: 10px 10px;
+}
