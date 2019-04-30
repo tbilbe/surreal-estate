@@ -1,12 +1,27 @@
 .addProperty {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   color: black;
   font-size: 15px;
   padding: 10px 10px;
 }
 
 form {
-  background-color: aquamarine;
-  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-radius: 4px;
+  background-color: #d4faf4;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+
+.submit-btn {
+  align-self: center;
+}
+
+div {
+  padding: 5px 15px
 }
