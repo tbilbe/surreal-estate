@@ -1,5 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import '../styles/addProperty.css';
+
+const BASE_URL = 'http://localhost:3000/api/v1';
 
 class AddProperties extends React.Component {
   constructor(props) {
@@ -7,8 +10,12 @@ class AddProperties extends React.Component {
     this.state = {
       fields: {
         title: '',
-        type: '',
+        type: 'Flat',
         city: 'Manchester',
+        email: '',
+        price: 0,
+        bedrooms: 0,
+        bathrooms: 0,
       },
     };
   }
@@ -22,6 +29,14 @@ class AddProperties extends React.Component {
   handleAddProperty = event => {
     event.preventDefault();
     console.log(this.state.fields);
+    const data = this.state.fields;
+    axios
+      .post(`${BASE_URL}/PropertyListing`, data)
+      .then(res => console.log('i am the res from the post', res));
+    axios
+      .get(`${BASE_URL}/PropertyListing`)
+      .then(res => console.log('i am the res from the get', res.data))
+      .catch(err => console.error(err));
   };
 
   render() {
@@ -32,7 +47,7 @@ class AddProperties extends React.Component {
           Please input the property details inside the form to add a property to
           our database
         </h3>
-        <form autocomplete="off" onSubmit={this.handleAddProperty}>
+        <form autoComplete="off" onSubmit={this.handleAddProperty}>
           <div>
             <label htmlFor="title">
               Title:
@@ -75,6 +90,51 @@ class AddProperties extends React.Component {
                 <option value="Manchester">Manchester</option>
               </select>
             </label>
+            <div>
+              <label>
+                Email:
+                <input
+                  placeholder="tom@isthebomb.com"
+                  type="email"
+                  value={this.state.fields.email}
+                  name="email"
+                  onChange={this.handleFieldChange}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Bedrooms:
+                <input
+                  type="number"
+                  value={this.state.fields.bedrooms}
+                  name="bedrooms"
+                  onChange={this.handleFieldChange}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Bathrooms:
+                <input
+                  type="number"
+                  value={this.state.fields.bathrooms}
+                  name="bathrooms"
+                  onChange={this.handleFieldChange}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Price:
+                <input
+                  type="number"
+                  value={this.state.fields.price}
+                  name="price"
+                  onChange={this.handleFieldChange}
+                />
+              </label>
+            </div>
           </div>
           <div className="submit-btn">
             <button type="submit">Add</button>

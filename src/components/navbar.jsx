@@ -9,12 +9,12 @@ const Navbar = () => {
     <div className="navbar">
       <FontAwesomeIcon icon={faDungeon} className="icon" /> Surreal Estate
       <ul className="nav">
-        <Link to="/">
-          <li className="item">View Houses</li>
-        </Link>
-        <Link to="/add-properties">
-          <li className="item">Add Houses</li>
-        </Link>
+        <li className="item">
+          <Link to="/">View Houses</Link>
+        </li>
+        <li className="item">
+          <Link to="/add-properties">Add Houses</Link>
+        </li>
       </ul>
       <hr />
     </div>
