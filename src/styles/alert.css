@@ -1,0 +1,12 @@
+.alert {
+  border: 3px solid black;
+  color: blueviolet !important;
+  font-size: 100px;
+}
+
+.alert.success {
+  color: red;
+  display: block;
+  border: 4px solid lightgreen;
+  box-shadow: 5px 10px #888888;
+}
