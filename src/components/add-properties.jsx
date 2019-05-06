@@ -53,7 +53,7 @@ class AddProperties extends React.Component {
       .then(() =>
         this.setState({
           isSuccess: true,
-          alertMessage: 'Thank you for adding a property to the Database',
+          alertMessage: 'Property Added to Surreal Estate!',
         })
       )
       .catch(() =>
