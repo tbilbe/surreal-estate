@@ -21,19 +21,13 @@ class Properties extends React.Component {
     };
   }
 
-  // this.setState({ proptertyInformation: res.data })
-
-  // componentDidMount() {
-  //   Axios.get(BASE_URL).then(res =>
-  //     this.setState({ propertyInformation: res.data })
-  //   );
-  // }
-
-  goGetProperties = () => {};
+  componentDidMount() {
+    Axios.get(BASE_URL).then(res =>
+      this.setState({ propertyInformation: res.data })
+    );
+  }
 
   render() {
-    console.log('going to get stuff-> ');
-    this.goGetProperties();
     console.log('this.state.propertyInfo:', this.state.propertyInformation);
 
     return (
