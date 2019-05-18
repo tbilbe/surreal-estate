@@ -1,7 +1,9 @@
-.sidebar:hover {
-  border: 2px solid #8debe3;
+a.sidebar:hover {
+  border: 2px solid #8de3eb;
+  background-color: #3bfdeda8;
+  padding: 5px 10px;
   color: rgb(8, 1, 1);
-  border-radius: 3px;
+  border-radius: 20px;
 }
 
 a.sidebar {
@@ -17,9 +19,11 @@ a.babySideBar {
   color: purple;
 }
 
-.babySideBar:hover {
+a.babySideBar:hover {
   border: 2px solid #8debe3;
+  background-color: #3bfdeda8;
   color: rgb(8, 1, 1);
-  border-radius: 3px;
+  padding: 5px 10px;
+  border-radius: 20px;
   /* background-color: rgba(128, 0, 128, 0.25); */
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import qs from 'qs';
-import { Link } from 'react-router-dom';
 import PropertiesCard from '../components/properties-card';
 import Axios from 'axios';
+import Filters from './filters';
 import Alert from './alert';
 import '../styles/properties.css';
+import SearchForm from './search';
 
 const BASE_URL = 'http://localhost:3000/api/v1/PropertyListing';
 
@@ -15,13 +16,26 @@ class Properties extends React.Component {
       error: false,
       propertyInformation: [],
       alertMessage: '',
+      searching: '',
     };
   }
 
+  searchCallback = searchParam => {
+    this.setState({ searching: searchParam });
+    console.log('inside searchCallback');
+    // console.log('searchingCity is:', this.state.searching);
+    const search = this.state.searching;
+    console.log(search);
+    // console.log('searchingCity inside callback:', search);
+    const newQueryString = this.buildQueryString('query', {
+      title: { $regex: searchParam },
+    });
+    const { history } = this.props;
+    history.push(newQueryString);
+  };
+
   buildQueryString = (operation, valueObj) => {
-    const {
-      location: { search },
-    } = this.props;
+    const { search } = this.props.location;
     const queryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
       ...queryParams,
@@ -47,58 +61,22 @@ class Properties extends React.Component {
   }
 
   componentDidUpdate(previousProps) {
-    const search = this.props.location;
-    if (previousProps.location.serach !== search) {
-      Axios.get(`${BASE_URL}${search.search}`)
+    const { search } = this.props.location;
+    if (previousProps.location.search !== search) {
+      Axios.get(`${BASE_URL}${search}`)
         .then(({ data: propertyInformation }) =>
           this.setState({ propertyInformation })
         )
-        .catch(err => console.log('error from component did Update', err));
+        .catch(err => console.error('error from component did Update', err));
     }
   }
 
   render() {
-    // console.log('this.props', this.props);
     return (
       <div>
         {this.state.error && <Alert message={this.state.alertMessage} />}
-        <div className="topbar">
-          <Link className="sidebar" to={''}>
-            All{' '}
-          </Link>
-          <Link
-            className="sidebar"
-            to={this.buildQueryString('query', { city: 'Leeds' })}>
-            Leeds{' '}
-          </Link>
-          <Link
-            className="sidebar"
-            to={this.buildQueryString('query', { city: 'Liverpool' })}>
-            Liverpool{' '}
-          </Link>
-          <Link
-            className="sidebar"
-            to={this.buildQueryString('query', { city: 'Manchester' })}>
-            Manchester{' '}
-          </Link>
-          <Link
-            className="sidebar"
-            to={this.buildQueryString('query', { city: 'Sheffield' })}>
-            Sheffield
-          </Link>
-        </div>
-        <div>
-          <Link
-            className="babySideBar"
-            to={this.buildQueryString('sort', { price: -1 })}>
-            Price Descending
-          </Link>
-          <Link
-            className="babySideBar"
-            to={this.buildQueryString('sort', { bedrooms: -1 })}>
-            Bedrooms Descending
-          </Link>
-        </div>
+        <SearchForm searchCallback={this.searchCallback} />
+        <Filters buildQueryString={this.buildQueryString} />
         <PropertiesCard cardData={this.state.propertyInformation} />
       </div>
     );
