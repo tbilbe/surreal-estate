@@ -23,8 +23,12 @@ li {
   text-decoration: none;
 }
 
+a:hover {
+  color: palevioletred;
+
+}
+
 .item:hover {
-  text-decoration: none;
   background-color: #8debe3;
   cursor: pointer;
   border-radius: 14px;

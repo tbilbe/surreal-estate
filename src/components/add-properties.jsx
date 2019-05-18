@@ -24,16 +24,6 @@ class AddProperties extends React.Component {
     };
   }
 
-  /*
-
-  GET READING THE RESPONSE FROM AXIOS FOR ERROR
-  AND SUCCESS - THIS WILL BE WRITEN TO THE STATE ABOVE
-  AND THE STATE WILL BE PASSED DOWN VIA PROPS TO THE ALERT
-  OBJECT -> IF IT IS TRUE ADD THE CORRECT STYLING TO THE
-  COMPONENT. :D
-
-  */
-
   handleFieldChange = event => {
     this.setState({
       fields: { ...this.state.fields, [event.target.name]: event.target.value },

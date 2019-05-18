@@ -1,5 +1,17 @@
 import React from 'react';
+import '../styles/propertiesCard.css';
+import {
+  faPoundSign,
+  faBath,
+  faBed,
+  faEnvelope,
+  faStar,
+} from '@fortawesome/free-solid-svg-icons';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+library.add(faBath, faPoundSign, faBed, faEnvelope, faStar);
 
 const wrapper = {
   display: 'grid',
@@ -7,21 +19,41 @@ const wrapper = {
   gridGap: '10px',
 };
 
+const iconStyle = {
+  color: '#551A8B',
+};
+
 const PropertiesCard = props => {
   return (
     <div style={wrapper}>
       {props.cardData.map(house => (
-        <ul key={house._id}>
-          <li>
-            <FontAwesomeIcon icon="font-awesome-alt" />
-          </li>
-          <li>{house.title}</li>
-          <li>{house.type}</li>
-          <li>{house.bedrooms}</li>
-          <li>{house.bathrooms}</li>
-          <li>{house.city}</li>
-          <li>{house.email}</li>
-        </ul>
+        <div key={house._id}>
+          <div className="cardWrap">
+            <div className="header">
+              <FontAwesomeIcon icon="star" />
+            </div>
+            <div className="title">{house.title}</div>
+            <div className="type">
+              <strong>House type: </strong>
+              {house.type}
+            </div>
+            <div className="bed">
+              <FontAwesomeIcon icon="bed" /> {house.bedrooms}
+            </div>
+            <div className="bath">
+              <FontAwesomeIcon icon="bath" /> {house.bathrooms}
+            </div>
+            <div className="city">{house.city}</div>
+            <div className="cost">
+              <FontAwesomeIcon icon="pound-sign" /> {house.price}
+            </div>
+            <button>
+              <a href={`mailto:${house.email}?Subject="${house.title}"`}>
+                <FontAwesomeIcon style={iconStyle} icon="envelope" />
+              </a>
+            </button>
+          </div>
+        </div>
       ))}
     </div>
   );
