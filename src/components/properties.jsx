@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropertiesCard from '../components/properties-card';
 import Axios from 'axios';
 import Alert from './alert';
+import '../styles/properties.css';
 
 const BASE_URL = 'http://localhost:3000/api/v1/PropertyListing';
 
@@ -24,12 +25,12 @@ class Properties extends React.Component {
     const queryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
       ...queryParams,
-      [operation]: JSON.stringify({
-        ...JSON.parse(queryParams[operation] || '{}'),
-        ...valueObj,
-      }),
+      [operation]: JSON.stringify(valueObj),
     };
-    return qs.parse(newQueryParams, { ignoreQueryPrefix: true, encode: false });
+    return qs.stringify(newQueryParams, {
+      addQueryPrefix: true,
+      encode: false,
+    });
   };
 
   componentDidMount() {
@@ -57,16 +58,46 @@ class Properties extends React.Component {
   }
 
   render() {
+    // console.log('this.props', this.props);
     return (
       <div>
         {this.state.error && <Alert message={this.state.alertMessage} />}
-        <div className="sidebar">
-          <Link to={''}>All </Link>
-          <Link to={this.buildQueryString('query', { city: 'Leeds' })}>
+        <div className="topbar">
+          <Link className="sidebar" to={''}>
+            All{' '}
+          </Link>
+          <Link
+            className="sidebar"
+            to={this.buildQueryString('query', { city: 'Leeds' })}>
             Leeds{' '}
           </Link>
-          <Link to={'/?query={"city": "Liverpool"}'}>Liverpool </Link>
-          <Link to={'/?query={"city": "Manchester"}'}>Manchester</Link>
+          <Link
+            className="sidebar"
+            to={this.buildQueryString('query', { city: 'Liverpool' })}>
+            Liverpool{' '}
+          </Link>
+          <Link
+            className="sidebar"
+            to={this.buildQueryString('query', { city: 'Manchester' })}>
+            Manchester{' '}
+          </Link>
+          <Link
+            className="sidebar"
+            to={this.buildQueryString('query', { city: 'Sheffield' })}>
+            Sheffield
+          </Link>
+        </div>
+        <div>
+          <Link
+            className="babySideBar"
+            to={this.buildQueryString('sort', { price: -1 })}>
+            Price Descending
+          </Link>
+          <Link
+            className="babySideBar"
+            to={this.buildQueryString('sort', { bedrooms: -1 })}>
+            Bedrooms Descending
+          </Link>
         </div>
         <PropertiesCard cardData={this.state.propertyInformation} />
       </div>
