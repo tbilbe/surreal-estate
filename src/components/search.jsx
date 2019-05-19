@@ -20,7 +20,6 @@ class SearchForm extends React.Component {
   };
 
   render() {
-    // console.log('SEARCH STATE: ', this.state.search);
     return (
       <div>
         <form autoComplete="off" onSubmit={this.handleSubmit}>

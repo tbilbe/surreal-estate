@@ -22,11 +22,6 @@ class Properties extends React.Component {
 
   searchCallback = searchParam => {
     this.setState({ searching: searchParam });
-    console.log('inside searchCallback');
-    // console.log('searchingCity is:', this.state.searching);
-    const search = this.state.searching;
-    console.log(search);
-    // console.log('searchingCity inside callback:', search);
     const newQueryString = this.buildQueryString('query', {
       title: { $regex: searchParam },
     });
@@ -39,7 +34,10 @@ class Properties extends React.Component {
     const queryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
       ...queryParams,
-      [operation]: JSON.stringify(valueObj),
+      [operation]: JSON.stringify({
+        ...JSON.parse(queryParams[operation] || '{}'),
+        ...valueObj,
+      }),
     };
     return qs.stringify(newQueryParams, {
       addQueryPrefix: true,
@@ -72,12 +70,16 @@ class Properties extends React.Component {
   }
 
   render() {
+    console.log('inside properties', this.props.userID);
     return (
       <div>
         {this.state.error && <Alert message={this.state.alertMessage} />}
         <SearchForm searchCallback={this.searchCallback} />
         <Filters buildQueryString={this.buildQueryString} />
-        <PropertiesCard cardData={this.state.propertyInformation} />
+        <PropertiesCard
+          userID={this.props.userID}
+          cardData={this.state.propertyInformation}
+        />
       </div>
     );
   }

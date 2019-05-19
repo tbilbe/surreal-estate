@@ -1,5 +1,6 @@
 .navbar {
   background-color: whitesmoke;
+  /* position: relative; */
 }
 
 .icon {
@@ -14,6 +15,10 @@
 
 li {
   text-decoration: none;
+}
+
+li:last-child {
+  float: right;
 }
 
 .item {

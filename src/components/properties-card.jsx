@@ -22,8 +22,12 @@ const wrapper = {
 const iconStyle = {
   color: '#551A8B',
 };
+const saveButton = {
+  marginTop: '5px',
+};
 
 const PropertiesCard = props => {
+  console.log('props in properties card', props.userID);
   return (
     <div style={wrapper}>
       {props.cardData.map(house => (
@@ -52,6 +56,12 @@ const PropertiesCard = props => {
                 <FontAwesomeIcon style={iconStyle} icon="envelope" />
               </a>
             </button>
+            {props.userID && (
+              <button style={saveButton}>
+                <FontAwesomeIcon icon="star" style={iconStyle} />
+                <span> Save</span>
+              </button>
+            )}
           </div>
         </div>
       ))}

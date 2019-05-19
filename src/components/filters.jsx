@@ -7,7 +7,7 @@ const Filters = props => {
       <div className="topbar">
         <span>Filter by City: </span>
         <Link className="sidebar" to={''}>
-          All
+          Remove Filters
         </Link>
         <Link
           className="sidebar"
