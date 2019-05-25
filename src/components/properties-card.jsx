@@ -19,15 +19,11 @@ const wrapper = {
   gridGap: '10px',
 };
 
-const iconStyle = {
-  color: '#551A8B',
-};
 const saveButton = {
   marginTop: '5px',
 };
 
 const PropertiesCard = props => {
-  console.log('props in properties card', props.userID);
   return (
     <div style={wrapper}>
       {props.cardData.map(house => (
@@ -51,14 +47,16 @@ const PropertiesCard = props => {
             <div className="cost">
               <FontAwesomeIcon icon="pound-sign" /> {house.price}
             </div>
-            <button>
-              <a href={`mailto:${house.email}?Subject="${house.title}"`}>
-                <FontAwesomeIcon style={iconStyle} icon="envelope" />
-              </a>
-            </button>
+            <a href={`mailto:${house.email}?Subject="${house.title}"`}>
+              <button className="mail-button">
+                <FontAwesomeIcon icon="envelope" />
+              </button>
+            </a>
             {props.userID && (
-              <button style={saveButton}>
-                <FontAwesomeIcon icon="star" style={iconStyle} />
+              <button
+                onClick={() => props.onSaveProperty(props._id)}
+                style={saveButton}>
+                <FontAwesomeIcon icon="star" />
                 <span> Save</span>
               </button>
             )}

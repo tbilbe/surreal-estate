@@ -4,11 +4,13 @@ ul {
 
 a {
   text-decoration: none;
+
 }
 
+/* 
 a:hover {
   color: white;
-}
+} */
 
 
 .cardWrap {
@@ -41,15 +43,18 @@ a:hover {
 button {
   border: solid 2px rgba(1, 1, 1, 0.2);
   border-radius: 4px;
-  width: 100%;
+  color: #551A8B;
+  width: 250px;
   height: 30px;
 }
 
-button a:hover {
-  color: hotpink;
-}
+/* button a:hover {
+  color: white;
+} */
 
-button:hover {
+button.mail-button:hover {
   background-color: rgb(205, 89, 221);
+  color: white;
+  font-weight: 900;
   border: none;
 }

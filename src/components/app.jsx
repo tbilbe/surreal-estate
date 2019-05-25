@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Navbar from './navbar';
 import Properties from './properties';
 import AddProperties from './add-properties';
+import SavedProperties from './saved-properties';
 import '../styles/app.css';
 
 class App extends React.Component {
@@ -14,7 +15,6 @@ class App extends React.Component {
   }
 
   handleLogin = response => {
-    // do some magic :D.
     return this.setState({ userID: response.userID });
   };
 
@@ -24,7 +24,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log('props in app', this.state.userID);
     return (
       <div className="app">
         <Navbar
@@ -40,6 +39,7 @@ class App extends React.Component {
               <Properties {...props} userID={this.state.userID} />
             )}
           />
+          <Route exact path="/saved-properties" component={SavedProperties} />
           <Route exact path="/add-properties" component={AddProperties} />
         </Switch>
       </div>

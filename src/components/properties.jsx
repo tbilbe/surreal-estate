@@ -20,6 +20,13 @@ class Properties extends React.Component {
     };
   }
 
+  handleSavedProperty = propertyId => {
+    Axios.post(`http://localhost:3000/api/v1/Favourite`, {
+      propertyListing: propertyId,
+      fbUserId: this.props.userID,
+    }).catch(err => console.log('inside catch, ', err));
+  };
+
   searchCallback = searchParam => {
     this.setState({ searching: searchParam });
     const newQueryString = this.buildQueryString('query', {
@@ -70,7 +77,6 @@ class Properties extends React.Component {
   }
 
   render() {
-    console.log('inside properties', this.props.userID);
     return (
       <div>
         {this.state.error && <Alert message={this.state.alertMessage} />}
@@ -79,6 +85,7 @@ class Properties extends React.Component {
         <PropertiesCard
           userID={this.props.userID}
           cardData={this.state.propertyInformation}
+          onSaveProperty={this.handleSavedProperty}
         />
       </div>
     );

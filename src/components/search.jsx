@@ -34,7 +34,7 @@ class SearchForm extends React.Component {
             />
           </label>
           <button onClick={this.handleSearch} type="submit">
-            clicky
+            Search
           </button>
         </form>
       </div>

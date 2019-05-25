@@ -13,6 +13,13 @@ const Navbar = props => {
         <li className="item">
           <Link to="/">View Houses</Link>
         </li>
+        {props.userID ? (
+          <li className="item">
+            <Link to="/saved-properties">Saved Properties</Link>
+          </li>
+        ) : (
+          <div className="item" />
+        )}
         <li className="item">
           <Link to="/add-properties">Add Houses</Link>
         </li>
