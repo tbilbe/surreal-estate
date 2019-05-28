@@ -18,7 +18,7 @@ const Navbar = props => {
             <Link to="/saved-properties">Saved Properties</Link>
           </li>
         ) : (
-          <div className="item" />
+          <div className="hidden" />
         )}
         <li className="item">
           <Link to="/add-properties">Add Houses</Link>

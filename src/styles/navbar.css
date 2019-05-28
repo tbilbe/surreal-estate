@@ -28,6 +28,14 @@ li:last-child {
   text-decoration: none;
 }
 
+
+.hidden {
+  margin: 0;
+  padding: 0px 0px;
+  display: inline-block;
+  text-decoration: none;
+}
+
 a:hover {
   color: palevioletred;
 
