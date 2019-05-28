@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack"
   },
   "keywords": [
     "react"
@@ -51,7 +52,7 @@
     "react-test-renderer": "^16.3.2",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
-    "webpack": "^4.6.0",
+    "webpack": "^4.32.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.3.1"
   },
