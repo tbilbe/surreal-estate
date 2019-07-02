@@ -1,0 +1,29 @@
+a.sidebar:hover {
+  border: 2px solid #8de3eb;
+  background-color: #3bfdeda8;
+  padding: 5px 10px;
+  color: rgb(8, 1, 1);
+  border-radius: 20px;
+}
+
+a.sidebar {
+  text-justify: center;
+  padding: 5px 10px;
+  color: purple;
+}
+
+
+a.babySideBar {
+  text-justify: center;
+  padding: 5px 10px;
+  color: purple;
+}
+
+a.babySideBar:hover {
+  border: 2px solid #8debe3;
+  background-color: #3bfdeda8;
+  color: rgb(8, 1, 1);
+  padding: 5px 10px;
+  border-radius: 20px;
+  /* background-color: rgba(128, 0, 128, 0.25); */
+}

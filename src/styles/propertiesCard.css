@@ -1,0 +1,60 @@
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+/* 
+a:hover {
+  color: white;
+} */
+
+
+.cardWrap {
+  background-color: whitesmoke;
+  border: solid purple 2px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  width: 100%;
+  padding: 0px 10px;
+  background-color: rgb(170, 250, 239);
+  border-radius: 4px;
+}
+
+.bed {
+  padding: 4px 15px;
+}
+
+button {
+  border: solid 2px rgba(1, 1, 1, 0.2);
+  border-radius: 4px;
+  color: #551A8B;
+  width: 250px;
+  height: 30px;
+}
+
+/* button a:hover {
+  color: white;
+} */
+
+button.mail-button:hover {
+  background-color: rgb(205, 89, 221);
+  color: white;
+  font-weight: 900;
+  border: none;
+}

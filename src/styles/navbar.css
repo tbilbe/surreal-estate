@@ -1,0 +1,40 @@
+.navbar {
+  background-color: whitesmoke;
+  /* position: relative; */
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+li {
+  text-decoration: none;
+}
+
+li:last-child {
+  float: right;
+}
+
+.item {
+  margin: 0;
+  padding: 5px 20px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+a:hover {
+  color: palevioletred;
+
+}
+
+.item:hover {
+  background-color: #8debe3;
+  cursor: pointer;
+  border-radius: 14px;
+}
